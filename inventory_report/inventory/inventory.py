@@ -1,4 +1,3 @@
-import os
 from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.importer.xml_importer import XmlImporter
@@ -22,13 +21,13 @@ class Inventory:
 
     @staticmethod
     def get_lista_by_type_file(path) -> list[dict]:
-        # https://www.horadecodar.com.br/2021/04/17/extrair-extensao-do-arquivo-com-python/
-        file, ext = os.path.splitext(path)
-        if ext.lower() == ".csv":
+        split_path = path.split(".")
+        ext = split_path[-1]
+        if ext.lower() == "csv":
             lista = CsvImporter.import_data(path)
-        elif ext.lower() == ".json":
+        elif ext.lower() == "json":
             lista = JsonImporter.import_data(path)
-        elif ext.lower() == ".xml":
+        elif ext.lower() == "xml":
             lista = XmlImporter.import_data(path)
         else:
             raise ValueError("Arquivo inválido")

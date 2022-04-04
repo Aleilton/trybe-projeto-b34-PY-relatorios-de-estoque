@@ -10,7 +10,7 @@ from inventory_report.reports.simple_report import SimpleReport
 class Inventory:
 
     @classmethod
-    def import_data(cls, path, relatorio: str) -> str:
+    def import_data(cls, path, relatorio):
         lista = cls.get_lista_by_type_file(path)
         if relatorio == "simples":
             result_report = SimpleReport.generate(lista)
@@ -21,14 +21,14 @@ class Inventory:
         return result_report
 
     @staticmethod
-    def get_lista_by_type_file(path) -> list[dict]:
+    def get_lista_by_type_file(path):
         # https://www.horadecodar.com.br/2021/04/17/extrair-extensao-do-arquivo-com-python/
         file, ext = os.path.splitext(path)
-        if ext == ".csv":
+        if ext.lower() == ".csv":
             lista = CsvImporter.import_data(path)
-        elif ext == ".json":
+        elif ext.lower() == ".json":
             lista = JsonImporter.import_data(path)
-        elif ext == ".xml":
+        elif ext.lower() == ".xml":
             lista = XmlImporter.import_data(path)
         else:
             raise ValueError("Arquivo inválido")

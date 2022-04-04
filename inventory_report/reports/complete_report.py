@@ -4,7 +4,7 @@ from inventory_report.reports.simple_report import SimpleReport
 class CompleteReport(SimpleReport):
 
     @classmethod
-    def generate(cls, lista: list) -> str:
+    def generate(cls, lista):
         return (
             f"{super().generate(lista)}\n"
             "Produtos estocados por empresa: \n"
@@ -12,7 +12,7 @@ class CompleteReport(SimpleReport):
         )
 
     @classmethod
-    def company_stocked_products_list(cls, lista: list) -> str:
+    def company_stocked_products_list(cls, lista):
         companies = cls.company_stocked_products(lista)
         result = ""
         for company in companies.items():

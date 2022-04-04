@@ -21,8 +21,7 @@ class Inventory:
 
     @staticmethod
     def get_lista_by_type_file(path) -> list[dict]:
-        split_path = path.split(".")
-        ext = split_path[-1]
+        ext = path.split(".")[-1]
         if ext.lower() == "csv":
             lista = CsvImporter.import_data(path)
         elif ext.lower() == "json":

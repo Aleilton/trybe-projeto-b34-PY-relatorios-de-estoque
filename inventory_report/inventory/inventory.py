@@ -1,8 +1,8 @@
+from typing import List, Dict
 from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.reports.complete_report import CompleteReport
-
 from inventory_report.reports.simple_report import SimpleReport
 
 
@@ -20,7 +20,7 @@ class Inventory:
         return result_report
 
     @staticmethod
-    def get_lista_by_type_file(path) -> list[dict]:
+    def get_lista_by_type_file(path) -> List[Dict]:
         ext = path.split(".")[-1]
         if ext.lower() == "csv":
             lista = CsvImporter.import_data(path)

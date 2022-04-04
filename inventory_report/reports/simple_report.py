@@ -1,3 +1,4 @@
+from typing import Dict
 from datetime import datetime
 
 
@@ -31,7 +32,7 @@ class SimpleReport:
         return sorted(closest_dates)[0]
 
     @staticmethod
-    def company_stocked_products(lista: list) -> dict:
+    def company_stocked_products(lista: list) -> Dict:
         result = {}
         for item in lista:
             company = item["nome_da_empresa"]

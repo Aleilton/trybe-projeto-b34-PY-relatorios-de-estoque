@@ -4,7 +4,7 @@ from datetime import datetime
 class SimpleReport:
 
     @classmethod
-    def generate(cls, lista):
+    def generate(cls, lista: list) -> str:
         return (
             "Data de fabricação mais antiga: "
             f"{cls.oldest_manufacturing_date(lista)}\n"
@@ -15,14 +15,14 @@ class SimpleReport:
         )
 
     @staticmethod
-    def oldest_manufacturing_date(lista):
+    def oldest_manufacturing_date(lista: list) -> str:
         oldest_dates = set()
         for item in lista:
             oldest_dates.add(item["data_de_fabricacao"])
         return sorted(oldest_dates)[0]
 
     @staticmethod
-    def closest_expiration_date(lista):
+    def closest_expiration_date(lista: list) -> str:
         closest_dates = set()
         for item in lista:
             item_data = datetime.strptime(item["data_de_validade"], "%Y-%m-%d")
@@ -31,7 +31,7 @@ class SimpleReport:
         return sorted(closest_dates)[0]
 
     @staticmethod
-    def company_stocked_products(lista):
+    def company_stocked_products(lista: list) -> dict:
         result = {}
         for item in lista:
             company = item["nome_da_empresa"]

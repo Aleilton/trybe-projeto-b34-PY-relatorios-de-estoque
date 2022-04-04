@@ -10,7 +10,7 @@ from inventory_report.reports.simple_report import SimpleReport
 class Inventory:
 
     @classmethod
-    def import_data(cls, path, relatorio):
+    def import_data(cls, path, relatorio: str) -> str:
         lista = cls.get_lista_by_type_file(path)
         if relatorio == "simples":
             result_report = SimpleReport.generate(lista)
@@ -21,7 +21,7 @@ class Inventory:
         return result_report
 
     @staticmethod
-    def get_lista_by_type_file(path):
+    def get_lista_by_type_file(path) -> list[dict]:
         # https://www.horadecodar.com.br/2021/04/17/extrair-extensao-do-arquivo-com-python/
         file, ext = os.path.splitext(path)
         if ext.lower() == ".csv":

@@ -18,7 +18,7 @@ class InventoryRefactor(Iterable):
         if relatorio == "simples":
             result_report = SimpleReport.generate(self.data)
         elif relatorio == "completo":
-            result_report = CompleteReport.generate(self.lista)
+            result_report = CompleteReport.generate(self.data)
         else:
             raise Exception("Opção inválida")
         return result_report
